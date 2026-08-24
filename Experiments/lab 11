@@ -1,0 +1,11 @@
+import math
+
+# Number of possible 5x5 arrangements
+keys = math.factorial(25)
+
+print("Possible keys =", keys)
+print("Approximate power of 2 =",
+      math.log2(keys))
+
+# Playfair keys equivalent because rows/columns
+# can be rearranged without changing the effective cipher.
