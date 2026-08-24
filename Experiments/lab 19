@@ -1,0 +1,20 @@
+from Crypto.Cipher import DES3
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Random import get_random_bytes
+
+key = DES3.adjust_key_parity(get_random_bytes(24))
+iv = get_random_bytes(8)
+
+text = input("Enter plaintext: ").encode()
+
+cipher = DES3.new(key, DES3.MODE_CBC, iv)
+
+encrypted = cipher.encrypt(pad(text,8))
+
+print("Ciphertext:", encrypted.hex())
+
+cipher2 = DES3.new(key, DES3.MODE_CBC, iv)
+
+decrypted = unpad(cipher2.decrypt(encrypted),8)
+
+print("Decrypted:", decrypted.decode())
