@@ -1,0 +1,16 @@
+cipher = input("Enter ciphertext: ").upper()
+top = int(input("Enter number of possible plaintexts: "))
+
+for shift in range(26):
+    plain = ""
+
+    for ch in cipher:
+        if ch.isalpha():
+            plain += chr((ord(ch)-65-shift)%26+65)
+        else:
+            plain += ch
+
+    print(f"{shift}: {plain}")
+
+    if shift + 1 == top:
+        break
