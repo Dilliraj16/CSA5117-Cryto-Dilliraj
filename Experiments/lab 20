@@ -1,0 +1,30 @@
+from Crypto.Cipher import DES3
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Random import get_random_bytes
+
+key = DES3.adjust_key_parity(get_random_bytes(24))
+iv = get_random_bytes(8)
+
+text = input("Enter plaintext: ").encode()
+
+cipher = DES3.new(key, DES3.MODE_CBC, iv)
+
+encrypted = cipher.encrypt(pad(text,8))
+
+print("Ciphertext:", encrypted.hex())
+
+cipher2 = DES3.new(key, DES3.MODE_CBC, iv)
+
+decrypted = unpad(cipher2.decrypt(encrypted),8)
+
+print("Decrypted:", decrypted.decode())print("ECB:")
+print("Error in C1 affects only P1.")
+
+print("\nCBC:")
+print("Error in C1 corrupts P1 completely.")
+print("The error flips corresponding bits in P2.")
+print("Blocks after P2 are not affected.")
+
+print("\nBit error in source P1:")
+print("It affects C1 and therefore causes a corrupted P1.")
+print("It also changes C2 and propagates through subsequent CBC blocks.")
