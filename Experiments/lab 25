@@ -1,0 +1,12 @@
+import math
+
+n = int(input("Enter n: "))
+block = int(input("Enter plaintext block: "))
+
+g = math.gcd(block, n)
+
+if g > 1:
+    print("Common factor found:", g)
+    print("RSA modulus can be factored.")
+else:
+    print("No useful common factor found.")
