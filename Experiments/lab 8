@@ -1,0 +1,23 @@
+import string
+
+keyword = "CIPHER"
+alphabet = string.ascii_uppercase
+
+cipher_alphabet = ""
+for ch in keyword + alphabet:
+    if ch not in cipher_alphabet:
+        cipher_alphabet += ch
+
+print("Plain :", alphabet)
+print("Cipher:", cipher_alphabet)
+
+text = input("Enter plaintext: ").upper()
+
+cipher = ""
+for ch in text:
+    if ch in alphabet:
+        cipher += cipher_alphabet[alphabet.index(ch)]
+    else:
+        cipher += ch
+
+print("Ciphertext:", cipher)
