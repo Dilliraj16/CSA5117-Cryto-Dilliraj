@@ -1,0 +1,27 @@
+import numpy as np
+
+# Example plaintext matrix
+P = np.array([
+    [0, 1],
+    [2, 3]
+])
+
+# Corresponding ciphertext matrix
+C = np.array([
+    [5, 7],
+    [9, 11]
+])
+
+det = round(np.linalg.det(P))
+
+if np.gcd(det,26) != 1:
+    print("Plaintext matrix is not invertible modulo 26.")
+else:
+    P_inv = np.linalg.inv(P)
+
+    K = np.dot(C,P_inv)
+
+    K = np.round(K).astype(int) % 26
+
+    print("Recovered key:")
+    print(K)
