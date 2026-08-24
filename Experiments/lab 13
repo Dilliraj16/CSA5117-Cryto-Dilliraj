@@ -1,0 +1,19 @@
+import numpy as np
+
+P = np.array([
+    [7,4],
+    [4,19]
+])
+
+C = np.array([
+    [8,0],
+    [20,5]
+])
+
+P_inv = np.linalg.inv(P)
+K = np.dot(C, P_inv)
+
+K = np.round(K).astype(int) % 26
+
+print("Recovered key matrix:")
+print(K)
