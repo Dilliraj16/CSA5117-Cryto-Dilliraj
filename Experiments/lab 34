@@ -1,0 +1,15 @@
+def pad(data, block_size):
+    n = block_size - len(data) % block_size
+
+    if n == 0:
+        n = block_size
+
+    return data + b'\x80' + b'\x00'*(n-1)
+
+
+text = input("Enter message: ").encode()
+
+result = pad(text,8)
+
+print("Padded data:", result)
+print("Length:", len(result))
