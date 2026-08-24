@@ -1,0 +1,15 @@
+from collections import Counter
+
+cipher = """53‡‡†305))6*;4826)4‡.)4‡);806*;48†8¶60))85;;]8*;:‡*8†83
+(88)5*†;46(;88*96*?;8)*‡(;485);5*†2:*‡(;4956*2(5*—4)8¶8*
+;4069285);)6†8)4‡‡;1(‡9;48081;8:8‡1;48†85;4)485†528806*81"""
+
+freq = Counter(cipher)
+
+print("Character frequencies:")
+for ch, count in freq.most_common():
+    print(repr(ch), count)
+
+print("\nUse frequency analysis:")
+print("Most frequent symbol is a likely candidate for E.")
+print("Look for repeated patterns representing THE, AND, etc.")
