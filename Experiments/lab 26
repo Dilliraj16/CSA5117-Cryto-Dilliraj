@@ -1,0 +1,17 @@
+from math import gcd
+
+p = int(input("Enter p: "))
+q = int(input("Enter q: "))
+
+n = p*q
+phi = (p-1)*(q-1)
+
+new_e = int(input("Enter new public key e: "))
+
+if gcd(new_e, phi) != 1:
+    print("Invalid public key.")
+else:
+    new_d = pow(new_e, -1, phi)
+
+    print("New public key:", (new_e,n))
+    print("New private key:", new_d)
