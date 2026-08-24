@@ -1,0 +1,12 @@
+# DES decryption key order
+
+keys = []
+
+for i in range(16):
+    key = input(f"Enter K{i+1}: ")
+    keys.append(key)
+
+print("Decryption key order:")
+
+for key in reversed(keys):
+    print(key)
