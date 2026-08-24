@@ -1,0 +1,20 @@
+import random
+
+p = int(input("Enter p: "))
+q = int(input("Enter q: "))
+g = int(input("Enter g: "))
+
+x = int(input("Enter private key x: "))
+
+message = input("Enter message: ")
+
+h = sum(ord(c) for c in message) % q
+
+k = random.randint(1,q-1)
+
+r = pow(g,k,p) % q
+s = (pow(k,-1,q) * (h + x*r)) % q
+
+print("Signature:")
+print("r =",r)
+print("s =",s)
