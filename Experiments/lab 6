@@ -1,0 +1,22 @@
+from math import gcd
+
+cipher = input("Enter ciphertext: ").upper()
+
+valid_a = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]
+
+freq = {}
+for ch in cipher:
+    if ch.isalpha():
+        freq[ch] = freq.get(ch, 0) + 1
+
+print("Frequency:", sorted(freq.items(),
+                            key=lambda x: x[1],
+                            reverse=True))
+
+# Assume B -> E and U -> T
+# C = ap + b (mod 26)
+
+for a in valid_a:
+    for b in range(26):
+        if (a*4+b) % 26 == 1 and (a*19+b) % 26 == 19:
+            print("Possible a =", a, "b =", b)
