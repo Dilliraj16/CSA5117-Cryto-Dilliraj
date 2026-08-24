@@ -1,0 +1,27 @@
+plaintext = "send more money"
+key = [9,0,1,7,23,15,21,14,11,11,2,8,9]
+
+result = ""
+i = 0
+
+for ch in plaintext:
+    if ch.isalpha():
+        p = ord(ch.upper()) - 65
+        c = (p + key[i]) % 26
+        result += chr(c + 65)
+        i += 1
+    else:
+        result += ch
+
+print("Ciphertext:", result)
+
+# Key to decrypt ciphertext as "cash not needed"
+cipher = ''.join(c for c in result if c.isalpha())
+target = "cashnotneeded"
+
+new_key = []
+
+for c,p in zip(cipher,target):
+    new_key.append((ord(c)-ord(p)) % 26)
+
+print("Required key:", new_key)
