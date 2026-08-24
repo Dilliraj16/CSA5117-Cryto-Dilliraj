@@ -1,0 +1,24 @@
+from math import gcd
+
+def affine(text,a,b):
+    result = ""
+
+    for ch in text.upper():
+        if ch.isalpha():
+            p = ord(ch)-65
+            result += chr((a*p+b)%26+65)
+        else:
+            result += ch
+
+    return result
+
+
+a = int(input("Enter a: "))
+b = int(input("Enter b: "))
+text = input("Enter plaintext: ")
+
+if gcd(a,26) != 1:
+    print("Invalid a")
+else:
+    cipher = affine(text,a,b)
+    print("Ciphertext:",cipher)
