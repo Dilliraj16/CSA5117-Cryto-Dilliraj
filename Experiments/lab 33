@@ -1,0 +1,19 @@
+from Crypto.Cipher import DES
+
+key = input("Enter 8-character key: ").encode()
+
+if len(key) != 8:
+    print("Key must be exactly 8 bytes.")
+else:
+    text = input("Enter 8-character plaintext: ").encode()
+
+    if len(text) != 8:
+        print("Plaintext must be exactly 8 bytes.")
+    else:
+        cipher = DES.new(key, DES.MODE_ECB)
+
+        encrypted = cipher.encrypt(text)
+        print("Ciphertext:", encrypted.hex())
+
+        decrypted = cipher.decrypt(encrypted)
+        print("Decrypted:", decrypted.decode())
