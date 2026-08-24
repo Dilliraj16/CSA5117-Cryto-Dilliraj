@@ -1,0 +1,18 @@
+# SHA-3 state has 25 lanes.
+# Capacity lanes initially contain zero bits.
+
+lanes = 25
+rate = 1024
+
+capacity = 1600 - rate
+
+print("State size:", 1600, "bits")
+print("Rate:", rate, "bits")
+print("Capacity:", capacity, "bits")
+
+capacity_lanes = capacity // 64
+
+print("Capacity lanes:", capacity_lanes)
+
+print("Without permutation, input blocks only affect rate lanes.")
+print("Therefore, capacity lanes remain zero indefinitely.")
