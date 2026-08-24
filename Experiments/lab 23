@@ -1,0 +1,23 @@
+from Crypto.Cipher import DES
+from Crypto.Util.Padding import pad, unpad
+
+key = bytes.fromhex("1F7D")
+iv = bytes.fromhex("AA")
+
+plaintext = input("Enter plaintext: ").encode()
+
+# Demonstration with DES-compatible 8-byte key
+key = b"12345678"
+iv = b"AAAAAAAA"
+
+cipher = DES.new(key, DES.MODE_CBC, iv)
+
+encrypted = cipher.encrypt(pad(plaintext,8))
+
+print("Encrypted:", encrypted.hex())
+
+cipher2 = DES.new(key, DES.MODE_CBC, iv)
+
+decrypted = unpad(cipher2.decrypt(encrypted),8)
+
+print("Decrypted:", decrypted.decode())
