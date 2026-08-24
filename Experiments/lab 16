@@ -1,0 +1,26 @@
+from collections import Counter
+
+cipher = input("Enter ciphertext: ")
+
+freq = Counter(c.upper() for c in cipher if c.isalpha())
+
+english = "ETAOINSHRDLCUMWFGYPBVKJXQZ"
+
+sorted_chars = [x[0] for x in freq.most_common()]
+
+mapping = {}
+
+for i,ch in enumerate(sorted_chars):
+    if i < len(english):
+        mapping[ch] = english[i]
+
+result = ""
+
+for ch in cipher:
+    if ch.upper() in mapping:
+        result += mapping[ch.upper()]
+    else:
+        result += ch
+
+print("Possible plaintext:")
+print(result)
