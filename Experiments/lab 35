@@ -1,0 +1,21 @@
+import random
+
+text = input("Enter plaintext: ")
+
+key = [random.randint(0,25)
+       for _ in range(sum(c.isalpha() for c in text))]
+
+print("Key stream:", key)
+
+cipher = ""
+i = 0
+
+for ch in text:
+    if ch.isalpha():
+        p = ord(ch.upper()) - 65
+        cipher += chr((p+key[i])%26+65)
+        i += 1
+    else:
+        cipher += ch
+
+print("Ciphertext:", cipher)
