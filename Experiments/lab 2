@@ -1,0 +1,24 @@
+import string
+
+plain = string.ascii_uppercase
+key = input("Enter 26-letter key: ").upper()
+
+text = input("Enter plaintext: ").upper()
+
+encrypted = ""
+for ch in text:
+    if ch in plain:
+        encrypted += key[plain.index(ch)]
+    else:
+        encrypted += ch
+
+print("Ciphertext:", encrypted)
+
+decrypted = ""
+for ch in encrypted:
+    if ch in key:
+        decrypted += plain[key.index(ch)]
+    else:
+        decrypted += ch
+
+print("Plaintext:", decrypted)
